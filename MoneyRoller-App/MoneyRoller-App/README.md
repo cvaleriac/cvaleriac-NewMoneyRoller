@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -23,7 +22,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-=======
-# MoneyRoller-App
-Financial Institutions Rollover App
->>>>>>> 88d11b3e92cc886163777ea882afc74dee59a51b
