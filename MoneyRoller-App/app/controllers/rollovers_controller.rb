@@ -3,11 +3,11 @@ class RolloversController < ApplicationController
     before_action :authenticate_user!
 
     def Index
-       @rollovers = current_user.rollovers
+       @rollovers = Rollover.all
     end
 
     def show
-      @rollover = Rollover.find(params[:id])
+      @rollovers = Rollover.find_by(id: params[:id])
     end
 
 
@@ -16,12 +16,20 @@ class RolloversController < ApplicationController
     end
   
     def create
-      @rollover = Rollover.new(rollover_params)
-        if @rollover.save
-          redirect_to @rollover
-        else
-            render :new
+      rollover = Rollover.create(rollover_params)
+      redirect_to rollover_path(rollover)
+    end
+  
+    def edit
+      @rollover = Rollover.find(params[:id])
+    end
+
+    private
+
+    def rollover_params
+      params.require(:rollover).permit(:rollover_type, :origin_bank,
+                                        :destination_bank, :amount)
     end
   
   end
-end                
+               

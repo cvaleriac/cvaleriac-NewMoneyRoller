@@ -1,0 +1,15 @@
+<%= form_for(institution) do |f| %>
+  <div class='field'>
+    <%= f.label :name %><br />
+    <%= f.text_field :name%>
+    </div>
+    <%= f.label :address %>
+    <%= f.password_field :address %>
+     <%= f.label :file_type %>
+    <%= f.password_field :file_type%>
+     
+  </div>
+   <%= f.submit button_label %>
+<% end %>
+
+
