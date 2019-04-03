@@ -1,9 +1,13 @@
 class RolloversController < ApplicationController
 
-    before_action :authenticate_user
+    before_action :authenticate_user!
 
     def Index
-        @rollovers = Rollover.all
+       @rollovers = current_user.rollovers
+    end
+
+    def show
+      @arollover = Rollover.find(params[:id])
     end
 
 
@@ -19,4 +23,5 @@ class RolloversController < ApplicationController
             render :new
     end
   
-  end                
+  end
+end                

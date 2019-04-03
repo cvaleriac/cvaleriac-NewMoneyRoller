@@ -1,0 +1,14 @@
+<%= form_for(rollover) do |f| %>
+  <div class='field'>
+    <%= f.label :rollover_type %><br />
+    <%= f.text_field :rollover_type %>
+    </div>
+    <%= f.label :origin_bank %>
+    <%= f.password_field :origin_bank %>
+     <%= f.label :destination_bank %>
+    <%= f.password_field :destination_bank %>
+     <%= f.label :amount %>
+    <%= f.password_field :amount %>
+  </div>
+   <%= f.submit button_label %>
+<% end %>
