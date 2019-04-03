@@ -7,7 +7,7 @@ class RolloversController < ApplicationController
     end
 
     def show
-      @arollover = Rollover.find(params[:id])
+      @rollover = Rollover.find(params[:id])
     end
 
 
