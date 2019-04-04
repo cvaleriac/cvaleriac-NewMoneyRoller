@@ -3,11 +3,16 @@ class RolloversController < ApplicationController
     before_action :authenticate_user!
 
     def Index
-       @rollovers = Rollover.all
+       @rollovers = Rollover.current_user
     end
 
     def show
-      @rollovers = Rollover.find_by(id: params[:id])
+      @rollover = Rollover.find_by(rollover_type: params[:rollover_type])
+    end
+
+      
+    def outgoing
+      @rollover = Rollover.find_by(rollover_type: params[:rollover_type])
     end
 
 
@@ -16,9 +21,15 @@ class RolloversController < ApplicationController
     end
   
     def create
-      rollover = Rollover.create(rollover_params)
-      redirect_to rollover_path(rollover)
+      @rollover = current_user.rollovers.build(params[:rollover_params])
+      if @rollover.save  && params[:rollover_type]
+          redirect_to show_path(@rollover)
+      elsif @rollover.save && params[:rollover_type]
+        redirect_to outgoing_path(@rollover)
+      else
+        render new_rollover_path(@rollover)
     end
+  end
   
     def edit
       @rollover = Rollover.find(params[:id])
@@ -27,9 +38,8 @@ class RolloversController < ApplicationController
     private
 
     def rollover_params
-      params.require(:rollover).permit(:rollover_type, :origin_bank,
-                                        :destination_bank, :amount)
+      params.require(:rollover).permit(:rollover_type, :origin_bank, :destination_bank, :amount)
     end
   
   end
-               
+            

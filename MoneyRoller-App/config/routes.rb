@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   get '/signin' => 'users#signin', as: :signin
   post '/login' => 'users#login', as: :login
   get '/logout' => 'users#logout', as: :logout
-  get '/rollovers' => 'rollovers#index', as: :index
+  get '/rollovers/index' => 'rollovers#index', as: :index
+  get '/rollovers/incoming' => 'rollovers#show', as: :show
+  get '/rollovers/outgoing' => 'rollovers#outgoing', as: :outgoing
   
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
   resources :institutions, only: [:show]
-  resources :rollovers, only: [:show, :new]
+  resources :rollovers, only: [:new, :create, :edit, :destroy]
 end

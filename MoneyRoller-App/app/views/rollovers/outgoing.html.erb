@@ -1,13 +1,10 @@
 
-<h1>Your incoming rollovers</h1>
+<h1>Your outgoing rollovers</h1>
 
-<% if params[:rollover_type] == "incoming" %>
+<% if params[:rollover_type] == "outgoing" %>
 
 <p>Amount: <%= @rollover.amount %></p>
 <p>Origin bank: <%= @rollover.origin_bank %></p>
 <p>Destination bank: <%= @rollover.destination_bank %></p>
  
  <% end %>
-
- 
-
