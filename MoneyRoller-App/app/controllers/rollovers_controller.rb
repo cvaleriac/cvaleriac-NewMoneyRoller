@@ -21,16 +21,17 @@ class RolloversController < ApplicationController
     end
   
     def create
-      @rollover = current_user.rollovers.build(params[:rollover_params])
-      if @rollover.save  && params[:rollover_type]
+    
+      @rollover = current_user.rollovers.build(rollover_params)
+      if @rollover.rollover_type == "incoming" && @rollover.save
           redirect_to show_path(@rollover)
-      elsif @rollover.save && params[:rollover_type]
+      elsif @rollover.rollover_type == "outcoming" && @rollover.save
         redirect_to outgoing_path(@rollover)
       else
         render new_rollover_path(@rollover)
     end
   end
-  
+
     def edit
       @rollover = Rollover.find(params[:id])
     end

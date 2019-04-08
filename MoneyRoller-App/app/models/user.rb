@@ -5,4 +5,13 @@ class User < ActiveRecord::Base
 
   validates :username, :password, presence: true
   validates :username, uniqueness: true
+
+  def rollover_incoming
+    rollover_type
+  end
+
+  def rollover_outgoing
+    rollover_type
+  end
+
 end

@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   get '/rollovers/incoming' => 'rollovers#show', as: :show
   get '/rollovers/outgoing' => 'rollovers#outgoing', as: :outgoing
   
+  
+  
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :institutions, only: [:show]
+  resources :institutions, only: [:index, :show, :new]
   resources :rollovers, only: [:new, :create, :edit, :destroy]
 end

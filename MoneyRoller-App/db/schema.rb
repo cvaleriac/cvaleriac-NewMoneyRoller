@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_141153) do
+ActiveRecord::Schema.define(version: 2019_04_08_142243) do
 
   create_table "institutions", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2019_04_03_141153) do
     t.string "file_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rolloverinstitutions", force: :cascade do |t|
+    t.integer "rollover_id"
+    t.integer "institution_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["institution_id"], name: "index_rolloverinstitutions_on_institution_id"
+    t.index ["rollover_id"], name: "index_rolloverinstitutions_on_rollover_id"
   end
 
   create_table "rollovers", force: :cascade do |t|
