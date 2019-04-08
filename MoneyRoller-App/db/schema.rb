@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_142243) do
+ActiveRecord::Schema.define(version: 2019_04_08_155850) do
 
   create_table "institutions", force: :cascade do |t|
     t.string "name"
@@ -31,8 +31,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_142243) do
 
   create_table "rollovers", force: :cascade do |t|
     t.string "rollover_type"
-    t.string "origin_bank"
-    t.string "destination_bank"
+    t.string "origin"
     t.string "amount"
     t.integer "user_id"
     t.integer "institution_id"
