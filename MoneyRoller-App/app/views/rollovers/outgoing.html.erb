@@ -1,10 +1,7 @@
 
 <h1>Your outgoing rollovers</h1>
 
-<% if params[:rollover_type] == "outgoing" %>
-
 <p>Amount: <%= @rollover.amount %></p>
-<p>Origin bank: <%= @rollover.origin_bank %></p>
+<p>Origin bank: <%= @rollover.origin %></p>
 <p>Destination: <%= @rollover.institution_id %></p>
  
- <% end %>

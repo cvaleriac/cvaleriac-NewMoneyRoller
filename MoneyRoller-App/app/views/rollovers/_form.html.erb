@@ -4,16 +4,31 @@
     <%= f.select :rollover_type, ["Incoming","Outgoing"] %><br />
   </div>
   <div class='field'>
-    <%= f.label :origin_bank %><br />
-    <%= f.text_field :origin_bank %>
+    <%= f.label :origin %><br />
+    <%= f.text_field :origin %>
   </div>
    <div>
   <%= f.label :institution_id, :institution %>
   <%= f.text_field :institution %>
   </div>
+  <div>
+  <%= f.fields_for :institution do |i|%>
+  <%= i.label :name%>
+  <%= i.text_field :name %>
+  </div>
+  <div>
+  <%= i.label :address%>
+  <%= i.text_field :address %>
+  </div>
+  <div>
+   <%= i.label :file_type%>
+  <%= i.text_field :file_type %>
+  </div>
+<% end %>
+  </div>
   <div class='field'>
     <%= f.label :amount %><br />
-    <%= f.number_field :amount %>
+    <%= f.number_field :amount, min:0 %>
   </div>
   
   <%= f.submit button_label %>

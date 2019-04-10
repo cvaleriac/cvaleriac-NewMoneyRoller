@@ -18,17 +18,19 @@ class RolloversController < ApplicationController
 
     def new
       @rollover = Rollover.new
+      @institution = @rollover.build_institution
     end
   
     def create
     
       @rollover = current_user.rollovers.build(rollover_params)
-      if @rollover.rollover_type == "incoming" && @rollover.save
+    
+      if @rollover.rollover_type == "Incoming" && @rollover.save
           redirect_to show_path(@rollover)
-      elsif @rollover.rollover_type == "outcoming" && @rollover.save
+      elsif @rollover.rollover_type == "Outgoing" && @rollover.save
         redirect_to outgoing_path(@rollover)
       else
-        render new_rollover_path(@rollover)
+        render :new
     end
   end
 
@@ -39,7 +41,7 @@ class RolloversController < ApplicationController
     private
 
     def rollover_params
-      params.require(:rollover).permit(:rollover_type, :origin_bank, :destination_bank, :amount)
+      params.require(:rollover).permit(:rollover_type, :origin, :destination_bank, :amount, :institution_id, institution_attributes:[:name, :address, :file_type])
     end
   
   end

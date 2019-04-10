@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   post '/login' => 'users#login', as: :login
   get '/logout' => 'users#logout', as: :logout
   get '/rollovers/index' => 'rollovers#index', as: :index
-  get '/rollovers/incoming' => 'rollovers#show', as: :show
-  get '/rollovers/outgoing' => 'rollovers#outgoing', as: :outgoing
+  get '/rollovers/incoming/:id' => 'rollovers#show', as: :show
+  get '/rollovers/outgoing/:id' => 'rollovers#outgoing', as: :outgoing
   
   
   
