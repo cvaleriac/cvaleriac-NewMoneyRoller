@@ -1,18 +1,19 @@
 class RolloversController < ApplicationController
 
     before_action :authenticate_user!
+    
 
     def Index
-       @rollovers = Rollover.current_user
+       @rollovers = Rollover.all
     end
 
-    def show
-      @rollover = Rollover.find_by(rollover_type: params[:rollover_type])
+    def incoming
+      @rollover = Rollover.find_by(id: params[:id])
     end
 
       
     def outgoing
-      @rollover = Rollover.find_by(rollover_type: params[:rollover_type])
+      @rollover = Rollover.find_by(id: params[:id])
     end
 
 
@@ -26,7 +27,7 @@ class RolloversController < ApplicationController
       @rollover = current_user.rollovers.build(rollover_params)
     
       if @rollover.rollover_type == "Incoming" && @rollover.save
-          redirect_to show_path(@rollover)
+          redirect_to incoming_path(@rollover)
       elsif @rollover.rollover_type == "Outgoing" && @rollover.save
         redirect_to outgoing_path(@rollover)
       else
@@ -41,8 +42,8 @@ class RolloversController < ApplicationController
     private
 
     def rollover_params
-      params.require(:rollover).permit(:rollover_type, :origin, :destination_bank, :amount, :institution_id, institution_attributes:[:name, :address, :file_type])
+      params.require(:rollover).permit(:rollover_type, :origin, :amount, :institution_id, institution_attributes:[:name, :address, :file_type])
     end
-  
+
   end
             
