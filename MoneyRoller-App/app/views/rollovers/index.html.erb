@@ -2,6 +2,12 @@
 
 
   <% @rollovers.each do |rollover| %>
-      <%= link_to rollover.rollover_type, incoming_path(rollover.id) %>
-      <%= link_to rollover.rollover_type, outgoing_path(rollover.id) %>
+  <% if rollover.rollover_type == "Incoming"%>
+  <%= link_to rollover.amount, incoming_path(rollover.id)%>
+  <%else %>
+    <%= link_to rollover.amount, outgoing_path(rollover.id) %>
   <% end %>
+  <%end%>
+
+
+<p><%= link_to "Create new rollover", new_rollover_path(@rollover)  %></p>
