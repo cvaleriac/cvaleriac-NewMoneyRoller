@@ -5,6 +5,8 @@
 <p>Origin bank: <%= @rollover.origin %></p>
 <p>Institution: <%= @rollover.institution_id %></p>
  
+ <%= link_to "edit", edit_rollover_path(@rollover)  %> -
+<%= link_to "delete", rollover_path(@rollover), method: :delete, data: { confirm: "You sure?" } %><br>
 
 
  
