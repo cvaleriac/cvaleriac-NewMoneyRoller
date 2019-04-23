@@ -8,8 +8,8 @@
     <%= f.text_field :origin %>
   </div>
    <div>
-  <%= f.label :institution_id, :institution %>
-  <%= f.text_field :institution %>
+  <%= f.label :institution_id %>
+  <%= f.collection_select(:institution_id, Institution.all, :id, :name, prompt: true) %>
   </div>
   <div>
   <%= f.fields_for :institution do |i|%>

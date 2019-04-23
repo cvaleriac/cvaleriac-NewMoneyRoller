@@ -4,12 +4,12 @@ class RolloversController < ApplicationController
   
 
   def index
-    if params[:institution_id]
-      @rollovers = Institution.find(params[:institution_id]).rollovers
-    else
+
+    if params[:institution_id].nil?
       @rollovers = current_user.rollovers
-    end
-    
+    elsif (institution = Institution.find_by(id: params[:institution_id]))
+        @rollovers = institution.rollovers
+    end  
   end
 
   def incoming
