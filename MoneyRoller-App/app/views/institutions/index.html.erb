@@ -1,4 +1,7 @@
-<h1>Institution</h1>
-<p>Name: <%= @institution.name %></p>
-<p>Address: <%= @institution.address %></p>
-<p>File type: <%= @institution.file_type %></p>
+<h1>Here it's the list of your Institutions</h1>
+
+<ul>
+  <% @institutions.each do |institution| %>
+    <li><%= link_to institution.name, institution_path(institution) %></li>
+  <% end %>
+</ul>

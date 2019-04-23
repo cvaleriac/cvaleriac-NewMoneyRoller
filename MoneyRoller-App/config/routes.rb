@@ -13,12 +13,12 @@ Rails.application.routes.draw do
 
 resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :institutions, only: [:index, :show, :new]
+  resources :institutions
   resources :rollovers, only: [:new, :create, :edit, :destroy]
 
   resources :institutions, only: [:show] do
     # nested resource for rollovers
-    resources :rollovers, only: [:incoming, :outgoing, :index]
+    resources :rollovers, only: [:incoming, :outgoing, :index, :new]
   end
  
   resources :rollovers, only: [:index, :incoming, :outgoing, :new, :create, :edit, :update]
