@@ -1,3 +1,18 @@
+<% if rollover.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(rollover.errors.count, "error") %>
+      prohibited this rollover from being saved:
+    </h2>
+
+    <ul>
+    <% rollover.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for(rollover) do |f| %>
   <div class= 'field'>
   <%= f.label :rollover_type %><br>

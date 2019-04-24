@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :rollovers
   has_many :institutions, through: :rollovers
 
-  validates :username, :password, presence: true
+  validates :username, :email, presence: true
   validates :username, uniqueness: true
 
 
