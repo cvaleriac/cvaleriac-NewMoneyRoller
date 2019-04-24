@@ -3,9 +3,9 @@
 
   <% @rollovers.each do |rollover| %>
   <% if rollover.rollover_type == "Incoming"%>
-  <%= link_to rollover.amount, incoming_path(rollover.id)%>
+  <p><%= link_to rollover.amount, incoming_path(rollover.id)%> - <%= rollover.rollover_type%><p>
   <%else %>
-    <%= link_to rollover.amount, outgoing_path(rollover.id) %>
+    <p><%= link_to rollover.amount, outgoing_path(rollover.id) %> - <%= rollover.rollover_type%></p>
   <% end %>
   <%end%>
 

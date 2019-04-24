@@ -39,6 +39,13 @@ class InstitutionsController < ApplicationController
     end
   end
 
+  def destroy
+    @institution = Institution.find(params[:id]) 
+    @institution.destroy
+    flash[:notice] = "Rollover deleted"
+    redirect_to institutions_path
+  end
+
   private
   def institution_params
     params.require(:institution).permit(:name, :address, :file_type)

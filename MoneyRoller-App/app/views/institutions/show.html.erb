@@ -9,11 +9,9 @@
   <% @institution.rollovers.each do |rollover| %>
     <li><%= link_to rollover.amount, institution_rollovers_path(@institution, rollover) %></li>
 
- 
- <p><%= link_to "edit", edit_institution_path(@institution)  %></p>
-<p><%= link_to "delete", institution_path(@institution), method: :delete, data: { confirm: "Are you sure?" } %></p>
-<p><%= link_to "Back", institutions_path(@institution)%></p>
-
-
   <% end %>
 </ul>
+
+<p><%= link_to "Edit institution", edit_institution_path(@institution)  %></p>
+<p><%= link_to "Delete institution", institution_path(@institution), method: :delete, data: { confirm: "Are you sure?" } %></p>
+<p><%= link_to "Back", institutions_path(@institution)%></p>

@@ -4,10 +4,12 @@
 <p>Amount: <%= @rollover.amount %></p>
 <p>Origin bank: <%= @rollover.origin %></p>
 <p>Destination: <%= @rollover.institution.name %></p>
- 
- <p><%= link_to "edit", edit_rollover_path(@rollover)  %></p>
-<p><%= link_to "delete", rollover_path(@rollover), method: :delete, data: { confirm: "Are you sure?" } %></p>
-<p><%= link_to "Back", rollovers_path(@rollover)%></p>
+ <p>File Type: <%= @rollover.institution.file_type %></p>
 
+
+
+ <p><%= link_to "Edit rollover", edit_rollover_path(@rollover)  %> - <%= link_to "Delete rollover", rollover_path(@rollover), method: :delete, data: { confirm: "Are you sure?" } %> - <%= link_to "Back", rollovers_path(@rollover)%></p>
+
+<p><%= link_to "Institutions", institutions_path(@institution)  %>
  
 
