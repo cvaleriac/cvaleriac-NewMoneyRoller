@@ -6,9 +6,9 @@ class RolloversController < ApplicationController
   def index
 
     if params[:institution_id].nil?
-      @rollovers = current_user.rollovers
+      @rollovers = current_user.rollovers.order_by_amount
     elsif (institution = Institution.find_by(id: params[:institution_id]))
-        @rollovers = institution.rollovers
+        @rollovers = institution.rollovers.order_by_amount
     end  
   end
 

@@ -3,7 +3,7 @@ class InstitutionsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-       @institutions = Institution.all 
+       @institutions = Institution.order_by_name 
     end
 
     def show
