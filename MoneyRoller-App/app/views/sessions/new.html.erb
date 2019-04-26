@@ -1,2 +1,16 @@
 <h1>Login to your Account</h1>
-<%= render partial: '/users/form', locals:{user: @user, button_label: "Log in"} %>
+
+<%= form_for :user do |f| %>
+  <div class='field'>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+    </div>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+    </div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+ 
+  <%= f.submit "Log in" %>
+<% end %>

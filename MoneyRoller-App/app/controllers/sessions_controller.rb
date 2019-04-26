@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
 
     def create
     @user = User.find_by(username: params[:user][:username])
-    if @user & @user.authenticate(params[:user][:password])
-        session[:user_id] = @user.user_id
+    if @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
         redirect_to rollovers_path
     else
         flash[:notice] = 'Log in failed. Please try again.'
@@ -26,6 +26,14 @@ class SessionsController < ApplicationController
     redirect_to rollovers_path
 
     end
+
+    def destroy
+        session.delete :user_id
+        @current_user = nil
+        flash[:notice] = 'You have been successfully logged out.'
+        redirect_to root_path
+      end
+    
     
     private 
 

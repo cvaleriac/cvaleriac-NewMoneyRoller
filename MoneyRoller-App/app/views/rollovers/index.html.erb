@@ -1,4 +1,4 @@
-<h1>Hello, here is the list of your rollovers</h1>
+<h1>Here is the list of your rollovers</h1>
 
 
   <% @rollovers.each do |rollover| %>
@@ -11,4 +11,4 @@
 
 
 <p><%= link_to "Create new rollover", new_rollover_path(@rollover)  %></p>
-<p><%= link_to "Logout", new_rollover_path(@rollover)  %></p>
+<p><%= link_to "Logout",  logout_path, method: 'delete' %></p>

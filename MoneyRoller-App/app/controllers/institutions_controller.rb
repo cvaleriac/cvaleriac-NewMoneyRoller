@@ -1,9 +1,10 @@
 class InstitutionsController < ApplicationController
 
     before_action :authenticate_user!
+    before_action :current_user
 
     def index
-       @institutions = Institution.order_by_name 
+       @institutions = current_user.institutions.order_by_name 
     end
 
     def show
@@ -16,7 +17,7 @@ class InstitutionsController < ApplicationController
   
     def create
     
-      @institution = Institution.new(institution_params)
+      @institution = current_user.institutions.build(institution_params)
       if @institution.save
           redirect_to institution_path(@institution)
 
