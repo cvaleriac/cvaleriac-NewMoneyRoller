@@ -5,27 +5,36 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @user = User.find_by(username: params[:user][:username])
-        if @user & @user.authenticate(params[:user][:password])
-            session[:user_id] = @user.user_id
-            redirect_to rollovers_path
-        else
-            render :new
-        end
+    @user = User.find_by(username: params[:user][:username])
+    if @user & @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.user_id
+        redirect_to rollovers_path
+    else
+        flash[:notice] = 'Log in failed. Please try again.'
+        render :new
+      end
+    end
+
+    def fbcreate
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
+            u.username = auth['info']['email']
+            u.password = 'password'
+          end
+       
+        session[:user_id] = @user.id
+
+    redirect_to rollovers_path
+
     end
     
-    def fbcreate
-    @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      u.name = auth['info']['name']
-      u.username = auth['info']['email']
-      u.password = 'password'
-      u.password_confirmation = 'password'
-    end
-    @user.save
-    session[:user_id] = @user.id
+    private 
 
-    redirect_to user_path(@user)
-end     
+    def auth
+    request.env['omniauth.auth']
+    end
+
 end
+
+
 
 
