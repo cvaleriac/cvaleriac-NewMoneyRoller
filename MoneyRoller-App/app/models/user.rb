@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :username, :uniqueness => { case_sensitive: false }
-  validates :email, uniqueness: true
+  validates :email, presence: true
+  
 
 
 end

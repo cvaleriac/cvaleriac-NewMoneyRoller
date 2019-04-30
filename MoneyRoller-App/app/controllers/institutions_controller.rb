@@ -4,11 +4,11 @@ class InstitutionsController < ApplicationController
     before_action :current_user
 
     def index
-       @institutions = current_user.institutions.order_by_name 
+       @institutions = current_user.institutions.order_by_name
     end
 
     def show
-      @institution = Institution.find(params[:id])
+        @institution = Institution.find(params[:id])
     end
 
     def new
@@ -50,6 +50,7 @@ class InstitutionsController < ApplicationController
   private
   def institution_params
     params.require(:institution).permit(:name, :address, :file_type)
-  end
+  end 
+
 
 end

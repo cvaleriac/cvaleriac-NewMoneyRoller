@@ -6,7 +6,7 @@
     <p>File Type: <%= @institution.file_type %></p>
 
 <ul>
-  <% @institution.rollovers.each do |rollover| %>
+  <% @institution.rollovers.by_user(current_user).each do |rollover| %>
     <li><%= link_to rollover.amount, institution_rollovers_path(@institution, rollover) %></li>
 
   <% end %>

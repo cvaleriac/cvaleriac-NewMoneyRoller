@@ -5,6 +5,7 @@ class Institution < ApplicationRecord
     validates :name, presence: true, uniqueness: true
 
     scope :order_by_name, -> {order(:name)}
+    
 end
 
   

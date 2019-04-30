@@ -5,6 +5,7 @@ class Rollover < ActiveRecord::Base
     accepts_nested_attributes_for :institution, reject_if: ->(attributes){ attributes['name'].blank? }, allow_destroy: true
 
     scope :order_by_amount, -> {order(:amount)}
+    scope :by_user, -> (current_user) {where('user_id = ?', current_user.id)}
 
 
 end
