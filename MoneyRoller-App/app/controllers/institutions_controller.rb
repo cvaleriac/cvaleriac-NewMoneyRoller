@@ -4,7 +4,7 @@ class InstitutionsController < ApplicationController
     before_action :current_user
 
     def index
-       @institutions = current_user.institutions.order_by_name
+       @institutions = current_user.institutions.order_by_name.uniq
     end
 
     def show
