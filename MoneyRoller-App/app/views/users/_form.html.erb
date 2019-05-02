@@ -1,26 +1,18 @@
-<% if user.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(user.errors.count, "error") %>
-      prohibited this user from being saved:
-    </h2>
 
-    <ul>
-    <% user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
+<section class="jumbotron text-center" >
 
 <%= form_for(user) do |f| %>
   <div class='field'>
-    <%= f.label :username %><br />
+  <ul>
+<% @user.errors.full_messages.each do |error_message|%>
+<li><%= error_message %></li>
+<% end %>
+<ul>
+    <%= f.label :username %></h4>
     <%= f.text_field :username %>
     </div>
     <div>
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.text_field :email %>
     </div>
     <div>
@@ -30,3 +22,4 @@
  
   <%= f.submit button_label %>
 <% end %>
+</section>

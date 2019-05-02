@@ -1,12 +1,23 @@
-<img src="https://www.insurancejournal.com/app/uploads/2015/06/bank-557x580.jpg">
-
-
-<h2>Welcome to MoneyRoller!</h2>
-
+<section class="jumbotron text-center" >
+    <div class="container">
+        <h1 class="jumbotron-heading">Welcome to MoneyRoller!</h1>
 
  <div class="center">
-      <%= link_to 'Log In', '/sessions/new' %>
-      <%= link_to 'Sign Up', '/users/new' %>
+ <button class="btn btn-outline-primary">
+      <%= link_to 'Log In', '/sessions/new' %></button>
+      <button class="btn btn-outline-primary">
+      <%= link_to 'Sign Up', '/users/new' %></button>
+      <button class="btn btn-outline-primary"> 
+      or <%= link_to "Sign Up via Facebook", '/auth/facebook'%></button>
     </div>
-  </div>
- or <%= link_to "Sign Up via Facebook", '/auth/facebook'%>
+
+     <div class="container">
+    <div class="row">
+        <div class="col-md-4" > 
+            <div class="card mb-4 shadow-sm">
+                <img src="https://www.insurancejournal.com/app/uploads/2015/06/bank-557x580.jpg">
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+ </section>

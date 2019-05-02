@@ -1,7 +1,16 @@
+
+<section class="jumbotron text-center" >
+
 <h1>Login to your Account</h1>
 
 <%= form_for :user do |f| %>
   <div class='field'>
+
+  <ul>
+<% @user.errors.full_messages.each do |error_message|%>
+<li><%= error_message %></li>
+<% end %>
+<ul>
     <%= f.label :username %><br />
     <%= f.text_field :username %>
     </div>
@@ -16,3 +25,4 @@
  
   <%= f.submit "Log in" %>
 <% end %>
+</section>

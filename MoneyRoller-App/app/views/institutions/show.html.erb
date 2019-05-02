@@ -1,3 +1,5 @@
+<section class="jumbotron text-center" >
+
 <h1>Institution info</h1>
 
     <h2><%= @institution.name %></h2>
@@ -7,11 +9,12 @@
 
 <ul>
   <% @institution.rollovers.by_user(current_user).each do |rollover| %>
-    <li><%= link_to rollover.amount, institution_rollovers_path(@institution, rollover) %></li>
-
+  <li><p><%= link_to rollover.amount, institution_rollovers_path(rollover.id)%><p></li>
   <% end %>
 </ul>
 
 <p><%= link_to "Edit institution", edit_institution_path(@institution)  %></p>
 <p><%= link_to "Delete institution", institution_path(@institution), method: :delete, data: { confirm: "Are you sure?" } %></p>
 <p><%= link_to "Back", institutions_path(@institution)%></p>
+
+</section>

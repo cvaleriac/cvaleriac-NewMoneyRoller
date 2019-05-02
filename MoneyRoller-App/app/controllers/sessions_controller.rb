@@ -17,11 +17,11 @@ class SessionsController < ApplicationController
 
     def fbcreate
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
-            u.username = auth['info']['email']
-            u.password = 'password'
+          u.username = auth['info']['email']
+          u.password = 'password'    
           end
-       
-        session[:user_id] = @user.id
+          @user.save
+          session[:user_id] = @user.id
 
     redirect_to rollovers_path
 

@@ -9,8 +9,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  
   <body>
     <%= yield %>
+    <% if is_logged_in? %>
+      <section class="container text-center">
+        <button class="btn btn-outline-primary">
+          <%= link_to "Log Out", logout_path, method: :delete %>
+        </button>
+      </section>
+    <% end %><br><br>
   </body>
 </html>

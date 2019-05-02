@@ -1,20 +1,14 @@
-<% if rollover.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(rollover.errors.count, "error") %>
-      prohibited this rollover from being saved:
-    </h2>
+<section class="jumbotron text-center" >
 
-    <ul>
-    <% rollover.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
 
 <%= form_for(rollover) do |f| %>
   <div class= 'field'>
+<ul>
+<% @rollover.errors.full_messages.each do |error_message|%>
+<li><%= error_message %></li>
+<% end %>
+<ul>
+
   <%= f.label :rollover_type %><br>
     <%= f.select :rollover_type, ["Incoming","Outgoing"] %><br />
   </div>
@@ -24,7 +18,7 @@
   </div>
    <div>
   <%= f.label :institution_id %>
-  <%= f.collection_select(:institution_id, Institution.all, :id, :name, prompt: true) %>
+  <%= f.collection_select(:institution_id,current_user.institutions.uniq, :id, :name, prompt: true) %>
   </div>
   <div>
   <%= f.fields_for :institution do |i|%>
@@ -48,3 +42,4 @@
   
   <%= f.submit button_label %>
 <% end %>
+</section>

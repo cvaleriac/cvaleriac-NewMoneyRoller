@@ -1,2 +1,8 @@
+<section class="jumbotron text-center" >
+
 <h1>Edit Institution</h1>
+
 <%= render partial: 'form', locals:{institution: @institution, button_label: "Edit"} %>
+<p><%= link_to "Delete institution", institution_path(@institution), method: :delete, data: { confirm: "Are you sure?" } %></p>
+<p><%= link_to "Back", institutions_path(@institution)%></p>
+</section>

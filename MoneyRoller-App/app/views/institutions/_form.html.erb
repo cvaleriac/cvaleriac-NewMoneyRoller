@@ -1,21 +1,14 @@
-<% if institution.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(institution.errors.count, "error") %>
-      prohibited this institution from being saved:
-    </h2>
-
-    <ul>
-    <% institution.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
+<section class="jumbotron text-center" >
 
 <%= form_for(institution) do |f| %>
   <div class='field'>
+
+  <ul>
+  <% @institution.errors.full_messages.each do |error_message|%>
+  <li><%= error_message %></li>
+  <% end %>
+  <ul>
+
     <%= f.label :name %><br />
     <%= f.text_field :name%>
     </div>
@@ -28,4 +21,4 @@
    <%= f.submit button_label %>
 <% end %>
 
-
+</section>

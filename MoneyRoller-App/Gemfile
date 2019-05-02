@@ -32,7 +32,8 @@ gem 'jbuilder', '~> 2.5'
  gem 'dotenv-rails'
  gem 'pry-rails'
  gem 'thin'
- 
+ gem 'bootstrap'
+ gem 'jquery-rails'  
  
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -56,6 +57,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rb-readline'
+
 end
 
 group :test do
