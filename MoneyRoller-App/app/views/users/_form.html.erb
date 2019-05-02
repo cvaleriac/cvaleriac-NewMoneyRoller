@@ -1,15 +1,18 @@
 
 <%= form_for(user) do |f| %>
+
+ <%= render partial: 'layouts/errors', locals: {object: @user} %>
+
   <div class='field'>
-
     <%= f.label :username %></h4>
-    <%= f.text_field :username %>
-
+    <%= f.text_field :username %><br />
+  </div>
+  <div>
     <%= f.label :email %>
-    <%= f.text_field :email %>
-   
+    <%= f.text_field :email %><br />
+  </div> 
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password %><br />
   </div>
  
   <%= f.submit button_label %>

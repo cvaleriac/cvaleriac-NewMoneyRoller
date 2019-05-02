@@ -1,0 +1,1 @@
+validates :username, :uniqueness => { case_sensitive: false }

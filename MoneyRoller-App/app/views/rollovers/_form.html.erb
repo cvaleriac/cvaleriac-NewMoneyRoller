@@ -1,14 +1,10 @@
 <section class="jumbotron text-center" >
 
-
 <%= form_for(rollover) do |f| %>
-  <div class= 'field'>
-<ul>
-<% @rollover.errors.full_messages.each do |error_message|%>
-<li><%= error_message %></li>
-<% end %>
-<ul>
 
+ <%= render partial: 'layouts/errors', locals: {object: @rollover} %>
+
+  <div class= 'field'>
   <%= f.label :rollover_type %><br>
     <%= f.select :rollover_type, ["Incoming","Outgoing"] %><br />
   </div>

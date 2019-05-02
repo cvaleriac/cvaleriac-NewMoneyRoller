@@ -6,19 +6,19 @@ class SessionsController < ApplicationController
     end
 
     def create
-    @user = User.find_by(username: params[:user][:username])
-    if @user.authenticate(params[:user][:password])
+      @user = User.find_by(email: params[:user][:email], username: params[:user][:username])
+      if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
         redirect_to rollovers_path
     else
         flash[:error] = 'Log in failed. Please try again.'
-        redirect_to 'login'
+        redirect_to '/login'
       end
     end
 
     def fbcreate
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
-          u.username = auth['info']['email']
+          u.username = auth['info']['username']
           u.email = 'email'
           u.password = 'password'    
           end

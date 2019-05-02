@@ -1,16 +1,12 @@
 
 <section class="jumbotron text-center" >
 
+<%= flash[:error]%>
+
 <h1>Login to your Account</h1>
 
 <%= form_for :user do |f| %>
   <div class='field'>
-
-  <ul>
-<% @user.errors.full_messages.each do |error_message|%>
-<li><%= error_message %></li>
-<% end %>
-<ul>
     <%= f.label :username %><br />
     <%= f.text_field :username %>
     </div>
@@ -19,7 +15,7 @@
     <%= f.text_field :email %>
     </div>
     <div>
-    <%= f.label :password %>
+    <%= f.label :password %><br />
     <%= f.password_field :password %>
   </div>
  
