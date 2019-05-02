@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
     
     def new
         @user = User.new
+        render :new
     end
 
     def create
@@ -10,14 +11,15 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to rollovers_path
     else
-        flash[:notice] = 'Log in failed. Please try again.'
-        render :new
+        flash[:error] = 'Log in failed. Please try again.'
+        redirect_to 'login'
       end
     end
 
     def fbcreate
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
           u.username = auth['info']['email']
+          u.email = 'email'
           u.password = 'password'    
           end
           @user.save

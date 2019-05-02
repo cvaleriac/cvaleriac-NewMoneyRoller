@@ -35,7 +35,6 @@ class InstitutionsController < ApplicationController
     if @institution.update(institution_params)
       redirect_to institution_path(@institution)
     else
-      flash[:notice] = "something went wrong"
       redirect_to edit_institution_path(@institution)
     end
   end

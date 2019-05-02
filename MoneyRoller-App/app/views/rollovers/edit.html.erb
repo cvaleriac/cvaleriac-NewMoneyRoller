@@ -1,5 +1,10 @@
 <section class="jumbotron text-center" >
 
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+
 <h1>Edit Rollover</h1>
 
 <%= render partial: 'form', locals:{rollover: @rollover, button_label: "Edit rollover"} %>

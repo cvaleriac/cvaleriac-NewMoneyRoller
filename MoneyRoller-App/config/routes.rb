@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :institutions, only: [:show] do
     # nested resource for rollovers
-    resources :rollovers, only: [:incoming, :outgoing, :index, :new]
+    resources :rollovers, only: [:incoming, :outgoing, :index, :new, :edit, :update]
   end
  
   resources :rollovers, only: [:index, :incoming, :outgoing, :new, :create, :edit, :update]

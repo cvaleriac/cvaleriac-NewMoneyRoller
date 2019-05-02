@@ -1,4 +1,8 @@
 <section class="jumbotron text-center" >
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
 <h1>Here it's the list of your Institutions</h1>
 
 <ul>

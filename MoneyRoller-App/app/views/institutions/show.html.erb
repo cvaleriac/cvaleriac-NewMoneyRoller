@@ -8,8 +8,12 @@
     <p>File Type: <%= @institution.file_type %></p>
 
 <ul>
-  <% @institution.rollovers.by_user(current_user).each do |rollover| %>
-  <li><p><%= link_to rollover.amount, institution_rollovers_path(rollover.id)%><p></li>
+  <% @institution.rollovers.by_user(current_user).each do |rollover| %></li>
+  <% if rollover.rollover_type == "Incoming"%>
+  <li><p><%= link_to rollover.amount, incoming_path(rollover.id)%><p></li>
+  <%else %>
+   <li> <p><%= link_to rollover.amount, outgoing_path(rollover.id) %></p></li>
+  <% end %>
   <% end %>
 </ul>
 
