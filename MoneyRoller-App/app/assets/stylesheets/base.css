@@ -1,10 +1,10 @@
 .jumbotron {
-    padding-top: auto;
-    padding-bottom: auto;
-    margin-bottom: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
     background-repeat: repeat;
     background-position: center;
-    background-size: auto;
+    background-size: cover;
     background-color: azure
   }
   @media (min-width: 768px) {
