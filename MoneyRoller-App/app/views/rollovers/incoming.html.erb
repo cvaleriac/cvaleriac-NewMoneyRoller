@@ -9,9 +9,10 @@
 
 
 
- <p><%= link_to "Edit rollover", edit_rollover_path(@rollover)  %> - <%= link_to "Delete rollover", rollover_path(@rollover), method: :delete, data: { confirm: "Are you sure?" } %> - <%= link_to "Back", rollovers_path(@rollover)%></p>
+ <p><button class="btn btn-outline-primary"><%= link_to "Edit rollover", edit_rollover_path(@rollover)  %></button> - <button class="btn btn-outline-primary"><%= link_to "Delete rollover", rollover_path(@rollover), method: :delete, data: { confirm: "Are you sure?" } %></button> - <button class="btn btn-outline-primary"><%= link_to "Back", rollovers_path(@rollover)%></button></p>
 
-<p><%= link_to "Institutions", institutions_path(@institution)  %>
+<p><button class="btn btn-outline-primary"><%= link_to "Institutions", institutions_path(@institution)  %></button>
+
 </section>
  
 

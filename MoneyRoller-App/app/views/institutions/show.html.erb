@@ -17,8 +17,8 @@
   <% end %>
 </ul>
 
-<p><%= link_to "Edit institution", edit_institution_path(@institution)  %></p>
-<p><%= link_to "Delete institution", institution_path(@institution), method: :delete, data: { confirm: "Are you sure?" } %></p>
-<p><%= link_to "Back", institutions_path(@institution)%></p>
+<p><button class="btn btn-outline-primary"><%= link_to "Edit institution", edit_institution_path(@institution)  %></button></p>
+<p><button class="btn btn-outline-primary"><%= link_to "Delete institution", institution_path(@institution), method: :delete, data: { confirm: "Are you sure?" } %></button></p>
+<p><button class="btn btn-outline-primary"><%= link_to "Back", institutions_path(@institution)%></button></p>
 
 </section>

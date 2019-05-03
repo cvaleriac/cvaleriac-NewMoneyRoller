@@ -33,9 +33,9 @@
   </div>
   <div class='field'>
     <%= f.label :amount %><br />
-    <%= f.number_field :amount, min:0 %>
+    <%= f.number_field :amount, min:0.01, step: :any %>
   </div>
   
-  <%= f.submit button_label %>
+  <p><%= f.submit button_label %></p>
 <% end %>
 </section>

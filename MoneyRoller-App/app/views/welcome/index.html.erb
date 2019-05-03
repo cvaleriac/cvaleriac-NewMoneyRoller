@@ -1,11 +1,11 @@
 <section class="jumbotron text-center" >
 
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
-
     <div class="container">
         <h1 class="jumbotron-heading">Welcome to MoneyRoller!</h1>
+
+        <p><% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %></p>
 
  <div class="center">
  <button class="btn btn-outline-primary">
