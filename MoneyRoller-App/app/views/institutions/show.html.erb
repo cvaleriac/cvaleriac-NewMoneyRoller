@@ -5,7 +5,7 @@
     <h2><%= @institution.name %></h2>
 
     <p>Address: <%= @institution.address %></p>
-    <p>File Type: <%= @institution.file_type %></p>
+    
 
 <ul>
   <% @institution.rollovers.by_user(current_user).each do |rollover| %></li>
