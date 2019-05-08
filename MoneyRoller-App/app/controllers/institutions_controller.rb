@@ -26,19 +26,6 @@ class InstitutionsController < ApplicationController
     end
   end
 
-  def edit
-    @institution = Institution.find(params[:id])
-  end
-
-  def update
-    @institution = Institution.find(params[:id])
-    if @institution.update(institution_params)
-      redirect_to institution_path(@institution)
-    else
-      redirect_to edit_institution_path(@institution)
-    end
-  end
-
 
   private
   def institution_params

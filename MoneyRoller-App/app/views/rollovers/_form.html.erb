@@ -8,16 +8,18 @@
   <%= f.label :rollover_type %><br>
     <%= f.select :rollover_type, ["Incoming","Outgoing"] %><br />
   </div>
+
   <div class='field'>
     <%= f.label :origin %><br />
     <%= f.text_field :origin %>
   </div>
    <div>
   <%= f.label :institution_id %>
-  <%= f.collection_select(:institution_id,current_user.institutions.uniq, :id, :name, prompt: true) %>
+  <%= f.collection_select(:institution_id,Institution.all, :id, :name, prompt: true) %>
   </div>
+  <h1> or Create a new Institution </h1> 
   <div>
-  <%= f.fields_for :institution do |i|%>
+    <%= f.fields_for :institution do |i|%>
   <%= i.label :name%>
   <%= i.text_field :name %>
   </div>
@@ -26,6 +28,7 @@
   <%= i.text_field :address %>
   </div>
 <% end %>
+
   </div>
   <div class='field'>
     <%= f.label :amount %><br />

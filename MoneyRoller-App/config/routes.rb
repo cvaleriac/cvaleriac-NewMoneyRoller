@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :institutions
   resources :rollovers, only: [:new, :create, :edit, :destroy]
 
-  resources :institutions, only: [:show] do
+  resources :institutions, only: [:show, :index] do
     # nested resource for rollovers
     resources :rollovers, only: [:incoming, :outgoing, :index, :new, :edit, :update]
   end

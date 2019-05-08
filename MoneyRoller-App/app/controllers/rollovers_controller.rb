@@ -6,12 +6,16 @@ class RolloversController < ApplicationController
 
   def index
 
-    if params[:institution_id].nil?
-      @rollovers = current_user.rollovers.order_by_amount
-    elsif (institution = Institution.find_by(id: params[:institution_id]))
-        @rollovers = institution.rollovers.by_user(current_user).order_by_amount
-  end
-end
+    if !is_logged_in?
+      redirect_to '/'
+    end
+    if params[:institution_id] && institution = Institution.find_by_id(params[:institution_id])
+      #nested route
+      @rollovers = institution.rollovers.by_user(current_user).order_by_amount
+    else
+          @rollovers = current_user.rollovers.order_by_amount
+        end
+    end
 
   def incoming
     @rollover = Rollover.find_by(id: params[:id])
@@ -24,8 +28,15 @@ end
 
 
   def new
-    @rollover = Rollover.new
-    @institution = @rollover.build_institution
+    #check if it's nested & it's a proper id
+    if params[:institution_id] && institution = Institution.find_by_id(params[:institution_id])
+      #nested route
+      @rollover = institution.rollovers.build
+    else
+      #unnested
+      @rollover = Rollover.new
+      @rollover.build_institution
+    end
   end
 
   def create
@@ -37,12 +48,23 @@ end
     elsif @rollover.rollover_type == "Outgoing" && @rollover.save
       redirect_to outgoing_path(@rollover)
     else
+      @rollover.build_institution
       render :new
   end
 end
 
   def edit
-    @rollover = Rollover.find(params[:id])
+    if params[:institution_id]
+      institution = Institution.find_by(id: params[:institution_id])
+      if institution.nil?
+        redirect_to institutions_path, alert: "Institution not found."
+      else
+        @rollover = institution.rollovers.find_by(id: params[:id])
+        redirect_to institution_rollovers_path(institution), alert: "Rollover not found." if @rollover.nil?
+      end
+    else
+      @rollover = Rollover.find(params[:id])
+    end
   end
 
   def update
