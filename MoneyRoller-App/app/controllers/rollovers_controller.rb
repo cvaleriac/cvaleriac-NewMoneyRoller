@@ -40,7 +40,6 @@ class RolloversController < ApplicationController
   end
 
   def create
-  
     @rollover = current_user.rollovers.build(rollover_params)
   
     if @rollover.rollover_type == "Incoming" && @rollover.save
@@ -51,6 +50,7 @@ class RolloversController < ApplicationController
       @rollover.build_institution
       render :new
   end
+    
 end
 
   def edit
