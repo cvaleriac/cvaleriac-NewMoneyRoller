@@ -17,6 +17,7 @@
   <%= f.label :institution_id %>
   <%= f.collection_select(:institution_id,Institution.all, :id, :name, prompt: true) %>
   </div>
+   <% if !params[:institution_id] %>
   <h1> or Create a new Institution </h1> 
   <div>
     <%= f.fields_for :institution do |i|%>
@@ -27,6 +28,7 @@
   <%= i.label :address%>
   <%= i.text_field :address %>
   </div>
+<% end %>
 <% end %>
 
   </div>
