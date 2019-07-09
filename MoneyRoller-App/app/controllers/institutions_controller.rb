@@ -5,10 +5,16 @@ class InstitutionsController < ApplicationController
 
     def index
        @institutions = current_user.institutions.order_by_name.uniq
+      respond_to do |f|
+        f.html
+        f.json {render json: @institutions}
+      end
     end
 
     def show
         @institution = Institution.find(params[:id])
+        render json: @institution.to_json
+        
     end
 
     def new
