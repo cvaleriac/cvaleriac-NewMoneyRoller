@@ -2,12 +2,12 @@
 
 <h1>Your outgoing rollovers</h1>
 
-<p>Amount: <%= @rollover.amount %></p>
-<p>Origin bank: <%= @rollover.origin %></p>
-<p>Destination: <%= link_to @rollover.institution.name, institution_path(@rollover.institution) if @rollover.institution %></p>
+<% @rollovers.each do |rollover| %>
+  <ul>
+  <li><p><%= link_to rollover.amount, rollover_path(rollover.id)%><p></li>
+  </ul>
+  <%end%>
 
- <p><button class="btn btn-outline-primary"><%= link_to "Edit rollover", edit_institution_rollover_path(@rollover.institution, @rollover) if @rollover.institution %></button></p>
-<p></button> - <button class="btn btn-outline-primary"><%= link_to "Delete rollover", rollover_path(@rollover), method: :delete, data: { confirm: "Are you sure?" } %></button> - <button class="btn btn-outline-primary"><%= link_to "Back", rollovers_path(@rollover)%></button></p>
-<p><button class="btn btn-outline-primary"><%= link_to "Institutions", institutions_path(@institution) %></button></p>
+<button class="btn btn-outline-primary"><%= link_to "Back", rollovers_path(@rollover)%></button></p>
 
 </section> 

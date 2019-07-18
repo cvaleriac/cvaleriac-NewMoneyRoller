@@ -9,7 +9,12 @@ class Rollover < ActiveRecord::Base
     validates :institution, presence: true
 
     scope :order_by_amount, -> {order(:amount)}
-    scope :by_user, -> (current_user) {where('user_id = ?', current_user.id)}
+    scope :by_user, -> (current_user) {where('user_id = ?', current_user.id)}   
+    
+    
+    scope :outgoing, -> {where(:rollover_type => 'Outgoing')}
+    scope :incoming, -> {where(rollover_type: "Incoming")}
+
 
 
 end

@@ -1,11 +1,9 @@
-$(() => {
-    bindClickHandlers()
-})
+$( document ).ready(function() {
+    $("a[href$='institutions']").click(function( event ) {
+ 
+        event.preventDefault();
+ 
+    });
+ 
+});
 
-const bindClickHandlers = () => {
-    $('.all_institutions').on('click', (e) => {
-    e.preventDefault()
-    console.log('hello')
-       
-    })
-}

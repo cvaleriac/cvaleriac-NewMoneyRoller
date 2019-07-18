@@ -18,14 +18,17 @@ class RolloversController < ApplicationController
     end
 
   def incoming
-    @rollover = Rollover.find_by(id: params[:id])
+   @rollovers = Rollover.incoming
   end
 
     
   def outgoing
-    @rollover = Rollover.find_by(id: params[:id])
+    @rollovers = Rollover.outgoing
   end
 
+  def show 
+    @rollover = Rollover.find_by(id: params[:id])
+  end
 
   def new
     #check if it's nested & it's a proper id

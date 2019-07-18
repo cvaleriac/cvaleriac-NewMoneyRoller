@@ -7,13 +7,10 @@
 <h1>Here is the list of your rollovers</h1>
 
 
-  <% @rollovers.each do |rollover| %>
-  <% if rollover.rollover_type == "Incoming"%>
-  <p><%= link_to rollover.amount, incoming_path(rollover.id)%> - <%= rollover.rollover_type%><p>
-  <%else %>
-    <p><%= link_to rollover.amount, outgoing_path(rollover.id) %> - <%= rollover.rollover_type%></p>
-  <% end %>
-  <%end%>
+  
+  <p><%= link_to "Incoming", rollovers_incoming_path%><p>
+  <p><%= link_to "Outgoing", rollovers_outgoing_path%><p>
+    
 
 
 <button class="btn btn-outline-primary"><%= link_to "New rollover", new_rollover_path(@rollover)  %></button>
