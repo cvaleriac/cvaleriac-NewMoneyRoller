@@ -13,9 +13,12 @@ class InstitutionsController < ApplicationController
 
     def show
         @institution = Institution.find(params[:id])
-        render json: @institution.to_json
+        respond_to do |f|
+        f.html
+        f.json {render json: @institutions}
         
     end
+  end
 
     def new
       @institution = Institution.new
