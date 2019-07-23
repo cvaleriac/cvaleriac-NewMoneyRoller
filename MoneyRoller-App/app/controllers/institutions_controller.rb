@@ -28,7 +28,8 @@ class InstitutionsController < ApplicationController
     
       @institution = current_user.institutions.build(institution_params)
       if @institution.save
-          redirect_to institution_path(@institution)
+          render json: @institution
+          #redirect_to institution_path(@institution)
 
       else
         render new_institution_path(@institution)

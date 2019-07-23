@@ -1,36 +1,61 @@
 $( document ).ready(function() {
-    $("a[href$='institutions']").click(function( event ) {
+    institutionsIndexClick() 
+    showInstitution()
+    newForm()
+
+})
+
+   function institutionsIndexClick(){
+
+     $("a[href$='institutions']").click(function( event ) {
  
         event.preventDefault();
         history.pushState(null, null, "institutions")
         fetch(`/institutions.json`)
         .then(res => res.json())
         .then(institutions => {
-            $('#app-container').html('')
+            $('.jumbotron.text-center').html('')
             institutions.forEach(institution => {
                 let newInstitution = new Institution(institution)
                 let institutionHtml = newInstitution.formatIndex()
-                    $('#app-container').append(institutionHtml)
+                    $('.jumbotron.text-center').append(institutionHtml)
             })
         })
+    })
+}
 
- 
-    });
 
-    $(document).on('click', ".show_link", function(e) {
+   function showInstitution(){
+        $(document).on('click', ".show_link", function(e) {
         e.preventDefault()
-        $('#app-container').html('')
+        $('.jumbotron.text-center').html('')
         let id = $(this).attr('data-id')
         fetch('/institution/${id}.json')
         .then(res => res.json())
         .then(institution => {
             let newinstitution = new Institution(institution)
             let institutionHtml = newInstitution.formatShow()
-            $('#app-container').append(institutionHtml)
+            $('.jumbotron.text-center').append(institutionHtml)
         })
     })
  
-});
+}
+
+function newForm() {
+    $(document).on('submit', '#new_institution', function(e) {
+      e.preventDefault()
+      console.log('event preventend')
+  
+      const values = $(this).serialize()
+  
+      $.post('/institutions', values).done(function(data) {
+        $('.jumbotron.text-center').html('')
+        const newInstitution = new Institution(data)
+        const institutionHtmlToAdd = newInstitution.formatShow()
+        $('.jumbotron.text-center').html(institutionHtmlToAdd)
+      })
+    })
+  }
     
 function Institution(institution) {
     this.id = institution.id
@@ -46,9 +71,13 @@ Institution.prototype.formatIndex = function(){
     ` 
     return institutionHtml
 }
+
 Institution.prototype.formatShow = function(){
     let institutionHtml = `
     <h3>${this.name}</h3>
+    <h3>${this.address}</h3>
+    <h3>${this.rollovers}</h3>
+    <h3>${this.users}</h3>
     ` 
     return institutionHtml
 }
