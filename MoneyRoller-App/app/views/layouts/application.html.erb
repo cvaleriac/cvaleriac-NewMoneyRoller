@@ -5,21 +5,19 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
   <div class="container">
-  <div id="app-container">
-  </div>
-  </div>
     <%= yield %>
     <% if is_logged_in? %>
       <section class="container text-center">
         <button class="btn btn-outline-primary">
           <%= link_to "Log Out", logout_path, method: :delete %>
         </button>
+        </div>
       </section>
     <% end %><br><br>
   </body>

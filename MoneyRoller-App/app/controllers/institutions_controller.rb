@@ -15,7 +15,7 @@ class InstitutionsController < ApplicationController
         @institution = Institution.find(params[:id])
         respond_to do |f|
         f.html
-        f.json {render json: @institutions}
+        f.json {render json: @institution}
         
     end
   end
