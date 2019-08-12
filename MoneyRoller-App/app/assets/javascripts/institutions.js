@@ -7,14 +7,14 @@ $( document ).ready(function() {
 
    function institutionsIndexClick(){
 
-     $("a[href$='institutions']").click(function( event ) {
+     $("[href$='institutions']").click(function( event ) {
  
         event.preventDefault();
-        history.pushState(null, null, "institutions")
+        history.pushState(null, null, "institutions") 
         fetch(`/institutions.json`)
         .then(res => res.json())
         .then(institutions => {
-            $('.container').html('')
+            $('.container').html('') //clear the app container
             institutions.forEach(institution => {
                 let newInstitution = new Institution(institution)
                 let institutionHtml = newInstitution.formatIndex()
@@ -50,7 +50,7 @@ function newForm() {
   
       $.post('/institutions', values).done(function(data) {
         $('.container').html('')
-        const newInstitution = new Institution(data)
+        const newInstitution = new Institution(data) //create new institution assignetd to the loc variable wich
         const institutionHtmlToAdd = newInstitution.formatShow()
         $('.container').html(institutionHtmlToAdd)
       })
@@ -78,9 +78,12 @@ Institution.prototype.formatShow = function(){
 
   let rolloversHtml = ``
   this.rollovers.forEach((rollover) => {
-    rolloversHtml += `<li> ${rollover.amount} `
+    rolloversHtml += `<li> ${rollover.amount}
+    `
+   
   })
     
+
     let institutionHtml = `
     <h3>${this.name}</h3>
     <h3>${this.address}</h3>
